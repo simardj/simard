@@ -3,7 +3,7 @@
 	session_start();
 
 	//Installation SDK FACEBOOK
-	require("facebook-php-sdk-v4-4.0-dev/autoload.php");
+	require "facebook-php-sdk-v4-4.0-dev/autoload.php";
 	const APPID = "1553479528238610";
 	const APPSECRET = "f5b2542a764c91a66ec31f768bc87025";
 
@@ -14,9 +14,10 @@
 
 	//Générer l'url de connexion
 	use Facebook\FacebookRedirectLoginHelper;
-	$redirectUrl = 'http://localhost/';
+	//$redirectUrl = 'http://localhost/';
+	$redirectUrl = 'https://simard.herokuapp.com';
 	$helper = new FacebookRedirectLoginHelper($redirectUrl);
-	$loginUrl = $helper->getLoginUrl(['email, user_birthday']);
+	$loginUrl = $helper->getLoginUrl();
 
 	//Récupérer les informations de session Facebook et les associer à la session courante
 
@@ -98,19 +99,8 @@
 		<div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-numposts="5" data-colorscheme="light"></div>
 
 
-
-
 		<div id="fb-root"></div>
-		<script>
-			(function(d, s, id) {
-				 var js, fjs = d.getElementsByTagName(s)[0];
-				  if (d.getElementById(id)) return;
-				  js = d.createElement(s); js.id = id;
-				  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&appId=1553479528238610&version=v2.3";
-				  fjs.parentNode.insertBefore(js, fjs);
-			}
-			(document, 'script', 'facebook-jssdk'));
-		</script>
+
 		<?php
 			$loginUrl = $helper->getLoginUrl();
 			echo "<a href='".$loginUrl."'>Se connecter</a>";
