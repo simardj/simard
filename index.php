@@ -85,8 +85,6 @@
 	</head>
 
 	<body>
-		
-		
 
 		<!-- Testez votre intégration à Facebook -->
 
@@ -98,6 +96,25 @@
 		</div>
 		</br>
 		<div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-numposts="5" data-colorscheme="light"></div>
+
+
+
+
+		<div id="fb-root"></div>
+		<script>
+			(function(d, s, id) {
+				 var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) return;
+				  js = d.createElement(s); js.id = id;
+				  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&appId=1553479528238610&version=v2.3";
+				  fjs.parentNode.insertBefore(js, fjs);
+			}
+			(document, 'script', 'facebook-jssdk'));
+		</script>
+		<?php
+			$loginUrl = $helper->getLoginUrl();
+			echo "<a href='".$loginUrl."'>Se connecter</a>";
+		?>
 
 	</body>
 
