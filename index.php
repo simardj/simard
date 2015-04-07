@@ -1,5 +1,10 @@
 <?php
+
+	error_reporting()(E_ALL);
+	init_set("display_errors", 1);
+
 	session_start();
+
 	//Installation SDK FACEBOOK
 	require("facebook-php-sdk-v4-4.0-dev/autoload.php");
 	const APPID = "1553479528238610";
@@ -96,6 +101,11 @@
 		</div>
 		</br>
 		<div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-numposts="5" data-colorscheme="light"></div>
+
+		<?php
+			$loginUrl = $helper->getLoginUrl();
+			echo '<a href="'.$loginUrl.'">Se connecter</a>';
+		?>
 
 	</body>
 
