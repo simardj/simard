@@ -102,11 +102,6 @@
 		</br>
 		<div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-numposts="5" data-colorscheme="light"></div>
 
-		<?php
-			$loginUrl = $helper->getLoginUrl();
-			echo '<a href="'.$loginUrl.'">Se connecter</a>';
-		?>
-
 	</body>
 
 </html>
