@@ -33,25 +33,6 @@
 	use Facebook\FacebookRequest;
 	use Facebook\GraphUser;
 
-	if($session) {
-
-  		try {
-
-   			$user_profile = (new FacebookRequest(
-      		$session, 'GET', '/me'
-    		))->execute()->getGraphObject(GraphUser::className());
-
-    		echo "Name: " . $user_profile->getName();
-
-  		} catch(FacebookRequestException $e) {
-
-    		echo "Exception occured, code: " . $e->getCode();
-    		echo " with message: " . $e->getMessage();
-
-  		}   
-
-	}
-
 ?>
 
 <!DOCTYPE html>
@@ -104,8 +85,19 @@
 		<div id="fb-root"></div>
 
 		<?php
-			$loginUrl = $helper->getLoginUrl();
-			echo "<a href='".$loginUrl."'>Se connecter</a>";
+
+			if($session)
+			{
+				$_SESSION['fb_token'] = (string) $session->getAccessToken();
+				$request_user = new FacebookRequest( $session,"GET","/me");
+				$request_user_executed = $request_user->execute();
+				$user = $request_user_executed->getGraphObject(GraphUser::className());
+				echo "Bonjour ".$user->getName();
+			}else{
+				$loginUrl = $helper->getLoginUrl();
+				echo "<a href='".$loginUrl."'>Se connecter</a>";
+			}
+
 		?>
 
 	</body>
